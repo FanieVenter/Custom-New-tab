@@ -47,24 +47,17 @@ document.addEventListener("DOMContentLoaded", function () {
         const todoList = document.getElementById("todoList");
         todoList.innerHTML = '';
 
-        // Fetch and display todo items from Todoist API
-        fetch("https://api.todoist.com/rest/v1/tasks", {
-            method: 'GET',
-            headers: {
-                'Authorization': '70bc6655e5fdb159e85610e62bd6fb98f2fbfd6b', // Replace with your Todoist API key
-            },
-        })
-            .then(response => response.json())
-            .then(data => {
-                data.forEach(task => {
-                    const li = document.createElement("li");
-                    li.textContent = task.content;
-                    todoList.appendChild(li);
-                });
-            })
-            .catch(error => console.error("Error fetching todo list:", error));
+        // Retrieve stored tasks from chrome storage
+        chrome.storage.local.get('todoistTasks', function (result) {
+            const tasks = result.todoistTasks || [];
+
+            tasks.forEach(task => {
+                const li = document.createElement("li");
+                li.textContent = task.content;
+                todoList.appendChild(li);
+            });
+        });
     }
-    
 
     // Initial content setup on page load
     setBackgroundImage();
