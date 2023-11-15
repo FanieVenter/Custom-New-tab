@@ -1,0 +1,19 @@
+{
+    "manifest_version": 2,
+    "name": "Custom New Tab",
+    "version": "1.0",
+    "description": "Custom new tab page with a to-do list.",
+    "chrome_url_overrides": {
+      "newtab": "newtab.html"
+    },
+    "permissions": [
+      "storage"
+    ],
+    "icons": {
+      "48": "icon.png"
+    },
+    "background": {
+      "scripts": ["scripts.js"],
+      "persistent": true
+    }
+}

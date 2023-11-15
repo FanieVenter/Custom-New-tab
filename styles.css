@@ -1,0 +1,86 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+}
+
+.background {
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    position: relative;
+}
+
+.centered-content {
+    text-align: center;
+    color: #000; /* Set text color to black */
+}
+
+h1 {
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+
+p {
+    font-size: 1.2em;
+}
+
+#quote {
+    margin-bottom: 10px;
+    color: #000
+}
+
+#author {
+    font-style: italic;
+}
+
+.bottom-buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    width: 100%;
+    position: absolute;
+    bottom: 20px;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+.todo-container {
+    text-align: left;
+    margin-top: 20px; /* Adjust the margin from the center */
+    padding: 20px; /* Add padding for the box */
+    background-color: #f0f0f0; /* Set background color for the box */
+    border-radius: 8px; /* Add rounded corners */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow */
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    font-size: 1.2em;
+    margin-bottom: 5px;
+}
+
+#newTodo {
+    padding: 8px;
+    margin-right: 5px;
+}
+
+#addTodoButton {
+    padding: 8px 15px;
+    font-size: 1em;
+    cursor: pointer;
+}
