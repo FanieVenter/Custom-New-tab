@@ -43,44 +43,28 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // Function to update the todo list
     function updateTodoList() {
         const todoList = document.getElementById("todoList");
         todoList.innerHTML = '';
 
-        // Fetch and display todo items from your API
-        fetch("YOUR_API_ENDPOINT")
+        // Fetch and display todo items from Todoist API
+        fetch("https://api.todoist.com/rest/v1/tasks", {
+            method: 'GET',
+            headers: {
+                'Authorization': '70bc6655e5fdb159e85610e62bd6fb98f2fbfd6b', // Replace with your Todoist API key
+            },
+        })
             .then(response => response.json())
             .then(data => {
-                data.forEach(todo => {
+                data.forEach(task => {
                     const li = document.createElement("li");
-                    li.textContent = todo.title;
+                    li.textContent = task.content;
                     todoList.appendChild(li);
                 });
             })
             .catch(error => console.error("Error fetching todo list:", error));
     }
-
-    // Function to add a new todo
-    function addTodo() {
-        const newTodoInput = document.getElementById("newTodo");
-        const newTodo = newTodoInput.value;
-
-        // Add the new todo to your API
-        fetch("YOUR_API_ENDPOINT", {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ title: newTodo }),
-        })
-            .then(response => response.json())
-            .then(() => {
-                updateTodoList();
-                newTodoInput.value = '';
-            })
-            .catch(error => console.error("Error adding todo:", error));
-    }
+    
 
     // Initial content setup on page load
     setBackgroundImage();
